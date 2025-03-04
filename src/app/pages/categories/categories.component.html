@@ -1,0 +1,14 @@
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+  <div
+    *ngFor="let category of categories"
+    class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center focus:outline-none focus:ring-2 focus:ring-green-600"
+    tabindex="0"
+  >
+    <img
+      [src]="category.image"
+      alt="{{ category.name }}"
+      class="w-full h-full object-cover"
+    />
+    <p class="mt-2 text-lg font-semibold">{{ category.name }}</p>
+  </div>
+</div>

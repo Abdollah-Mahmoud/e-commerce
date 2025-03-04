@@ -7,7 +7,6 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ProductsService {
-  //api logic ---httpclient
   constructor(private httpClient: HttpClient) {}
 
   getAllProducts(): Observable<any> {

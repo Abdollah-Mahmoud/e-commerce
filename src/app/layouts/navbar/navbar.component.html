@@ -43,7 +43,7 @@
             routerLinkActive="bg-green-500 text-white"
             class="block py-2 px-3 text-gray-700 dark:text-gray-50 rounded-sm"
             aria-current="page"
-            >home</a
+            >{{ "navbar.home" | translate }}</a
           >
         </li>
         <li>
@@ -53,6 +53,15 @@
             class="block py-2 px-3 text-gray-700 dark:text-gray-50 rounded-sm"
             aria-current="page"
             >{{ "navbar.products" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/wishlist"
+            routerLinkActive="bg-green-500 text-white"
+            class="block py-2 px-3 text-gray-700 dark:text-gray-50 rounded-sm"
+            aria-current="page"
+            >{{ "navbar.wishlist" | translate }}</a
           >
         </li>
 

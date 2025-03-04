@@ -1,1 +1,20 @@
-<p>brands works!</p>
+<div class="container mx-auto p-4">
+  <h2 class="text-3xl font-bold mb-4 text-center pb-3 text-green-600">
+    All Brands
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div
+      *ngFor="let brand of brands"
+      class="p-4 border rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-green-600"
+      tabindex="0"
+    >
+      <img
+        [src]="brand.image"
+        [alt]="brand.name"
+        class="w-24 h-24 mx-auto mb-2 object-cover rounded-lg"
+      />
+      <h3 class="text-lg font-semibold">{{ brand.name }}</h3>
+    </div>
+  </div>
+</div>
