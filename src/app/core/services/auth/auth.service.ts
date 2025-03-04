@@ -30,7 +30,6 @@ export class AuthService {
 
   getUserData(): void {
     jwtDecode(localStorage?.getItem('token')!);
-    console.log(this.userData);
   }
 
   logoutUser() {

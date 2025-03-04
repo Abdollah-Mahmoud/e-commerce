@@ -41,7 +41,6 @@ export class forgotPasswordComponent {
     this.resetPassword.get('email')?.patchValue(emailValue);
     this.AuthService.setEmailVerify(this.verifyEmail.value).subscribe({
       next: (res) => {
-        console.log(res);
         if (res.statusMsg === 'success') {
           this.step = 2;
         }
@@ -54,7 +53,6 @@ export class forgotPasswordComponent {
   verifyCodeSubmit(): void {
     this.AuthService.setCodeVerify(this.verifyCode.value).subscribe({
       next: (res) => {
-        console.log(res);
         if (res.status === 'Success') {
           this.step = 3;
         }
@@ -67,7 +65,6 @@ export class forgotPasswordComponent {
   resetPasswordSubmit(): void {
     this.AuthService.setResetPassword(this.resetPassword.value).subscribe({
       next: (res) => {
-        console.log(res);
         localStorage.setItem('token', res.token);
         this.AuthService.getUserData();
         this.router.navigate(['/home']);

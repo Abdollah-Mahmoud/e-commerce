@@ -19,7 +19,6 @@ export class DetailsComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe({
       next: (res) => {
         this.productId = res.get('id');
-        console.log(this.productId);
         this.productsService.getSpecificProducts(this.productId).subscribe({
           next: (res) => {
             this.productDetails = res.data;

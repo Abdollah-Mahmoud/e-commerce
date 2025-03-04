@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   private readonly toastrService = inject(ToastrService);
   private readonly NgxSpinnerService = inject(NgxSpinnerService);
 
-  hamada: string = '';
+  searchInput: string = '';
   products: IProduct[] = [];
   categories: ICategory[] = [];
 
@@ -83,7 +83,6 @@ export class HomeComponent implements OnInit {
   getProductsData(): void {
     this.productsService.getAllProducts().subscribe({
       next: (res) => {
-        console.log(res.data);
         this.products = res.data;
       },
       error: (err) => {
@@ -95,22 +94,17 @@ export class HomeComponent implements OnInit {
   getCategoryData() {
     this.categoriesService.getAllCategories().subscribe({
       next: (res) => {
-        console.log(res.data);
         this.categories = res.data;
       },
     });
   }
 
   addToCart(id: string): void {
-    console.log('addToCart', id);
-
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
-        console.log(res);
         if (res.status === 'success') {
           this.toastrService.success(res.message, 'FreshCart');
           this.cartService.cartNumber.next(res.numOfCartItems);
-          console.log(this.cartService.cartNumber.getValue());
         }
       },
       error: (err) => {

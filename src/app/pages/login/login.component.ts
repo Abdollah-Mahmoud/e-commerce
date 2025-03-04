@@ -43,7 +43,6 @@ export class LoginComponent {
 
       this.authService.sendLoginForm(this.loginForm.value).subscribe({
         next: (res) => {
-          console.log(res);
           if (res.message === 'success') {
             setTimeout(() => {
               localStorage?.setItem('token', res.token);

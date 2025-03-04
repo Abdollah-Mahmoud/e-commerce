@@ -22,7 +22,6 @@ export class CartComponent implements OnInit {
   getCartData(): void {
     this.cartService.getLoggedUserCart().subscribe({
       next: (res) => {
-        console.log(res.data);
         this.cartDetails = res.data;
       },
       error: (err) => {
@@ -33,7 +32,6 @@ export class CartComponent implements OnInit {
   removeItem(id: string): void {
     this.cartService.removeSpecificCartItem(id).subscribe({
       next: (res) => {
-        console.log(res);
         this.cartDetails = res.data;
         this.cartService.cartNumber.next(res.numOfCartItems);
       },
@@ -46,7 +44,6 @@ export class CartComponent implements OnInit {
   updateCount(id: string, count: number): void {
     this.cartService.updateProductQuantity(id, count).subscribe({
       next: (res) => {
-        console.log(res);
         this.cartDetails = res.data;
       },
       error: (err) => {
@@ -58,7 +55,6 @@ export class CartComponent implements OnInit {
   clearItems(): void {
     this.cartService.clearCart().subscribe({
       next: (res) => {
-        console.log(res);
         if (res.message === 'success') {
           this.cartDetails = {} as Icart;
           this.cartService.cartNumber.next(0);

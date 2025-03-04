@@ -1,1 +1,50 @@
-<p>products works!</p>
+<section>
+  <h2 class="text-4xl">Products</h2>
+
+  <input
+    [(ngModel)]="searchInput"
+    type="search"
+    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-green-400/50 block w-1/2 mx-auto p-2.5 my-5"
+  />
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+    @for (prod of products.slice(0, 12) | search : searchInput; track prod.id) {
+    <div
+      class="card border border-green-400/50 rounded-md overflow-hidden shadow relative"
+    >
+      <i
+        class="fas fa-heart absolute top-3 right-3 text-gray-300 cursor-pointer text-2xl transition-colors duration-300"
+        (click)="addToWishlist(prod.id)"
+      >
+      </i>
+
+      <div [routerLink]="['/details', prod._id]">
+        <div class="card-img">
+          <img
+            [src]="prod.imageCover"
+            class="w-full h-[250px] object-contain"
+            [alt]="prod.title"
+          />
+        </div>
+        <div class="card-body px-2 py-4">
+          <h4 class="text-green-500 text-xs">{{ prod.category.name }}</h4>
+          <h3 class="font-medium">{{ prod.title.split(" ", 2).join(" ") }}</h3>
+          <div class="flex justify-between items-center">
+            <span>{{ prod.price }} EGP</span>
+            <div class="flex items-center">
+              <i class="fas fa-star text-yellow-300"></i>
+              <span class="text-gray-500">{{ prod.ratingsAverage }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        (click)="addToCart(prod.id)"
+        class="bg-green-600 text-white py-2 px-10 border rounded w-full mx-auto block"
+      >
+        Add To Cart
+      </button>
+    </div>
+    }
+  </div>
+</section>

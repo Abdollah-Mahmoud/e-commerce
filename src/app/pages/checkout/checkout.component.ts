@@ -52,7 +52,6 @@ export class CheckoutComponent implements OnInit {
       .checkoutPayment(this.cartId, this.checkOutForm.value)
       .subscribe({
         next: (res) => {
-          console.log(res);
           if (res.status === 'success') {
             open(res.session.url, '_self');
           }
